@@ -1,0 +1,7 @@
+node_modules
+vendor
+
+Manual_documentação_eletronica_01.pdf
+upload/files/*
+upload/admin/*.png
+upload/thumbnails/*.png
