@@ -134,7 +134,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header-unlogged.php';
                             } else {
                         ?>
                                 <p><?php _e("This server does not allow self registrations.",'cftp_admin'); ?></p>
-                                <p><?php _e("If you need an account, please contact a server administrator.",'cftp_admin'); ?></p>
+                                <p><?php _e("If you need an account, please contact a server administrator.",'cftp_admin'); ?><a href="<?php echo BASE_URI; ?>email-new.php"><b> Aqui</b></a></p>
                         <?php
                             }
                         ?>
