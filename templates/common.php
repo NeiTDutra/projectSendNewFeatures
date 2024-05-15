@@ -12,7 +12,7 @@
  * templates, it's necessary to define the allowed levels, or else
  * the files list will not be available.
  */
-$allowed_levels = array(9,8,7,0);
+$allowed_levels = array(9,8,7,6,0);
 
 include_once ROOT_DIR.DS.'templates'.DS.'session_check.php';
 

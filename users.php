@@ -171,6 +171,7 @@ $current_url = get_form_action_with_existing_parameters(basename(__FILE__));
                                                         '9'		=> USER_ROLE_LVL_9,
                                                         '8'		=> USER_ROLE_LVL_8,
                                                         '7'		=> USER_ROLE_LVL_7,
+                                                        '6'     => USER_ROLE_LVL_6,
                                                     );
                                 foreach ( $roles_options as $val => $text ) {
                             ?>
@@ -327,6 +328,7 @@ $current_url = get_form_action_with_existing_parameters(basename(__FILE__));
                             case '9': $role_name = USER_ROLE_LVL_9; break;
                             case '8': $role_name = USER_ROLE_LVL_8; break;
                             case '7': $role_name = USER_ROLE_LVL_7; break;
+                            case '6': $role_name = USER_ROLE_LVL_6; break;
                         }
 
                         /* Get active status */

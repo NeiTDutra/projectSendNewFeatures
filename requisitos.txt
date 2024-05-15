@@ -1,0 +1,170 @@
+
+************** BMLA - eDoc - Requisitos iniciais
+
+# cPanel
+https://chronos-sys.cloud/cpanel
+
+U: chronos
+P: kENTyWAKEOeS
+
+# https://bmla.chronos-sys.cloud/sys/doc-e/index.php
+
+Usuário: itbmla
+senha: r%1ezhL4Q9hxf:ZOqWIH
+
+############
+
+Solicitações
+
+Chamado #59634
+
+Realizar a inclusão de um botão na tela de login onde os usuários consigam acessar o manual de como acessar o sistema, 
+conforme imagem abaixo de referencia...
+
+Chamado #59635
+
+Precisamos que na tela de Login, tenha a opção de “PRIMEIRO ACESSO”, onde o usuário clicando deva responder um “miniquestionário”, 
+com informações básicas (CNPJ, Razão social, nº de serie etc.).
+
+Essas respostas do usuário podem ou vir por email para o SERVICE.BR@BOMAG.COM ou fiquem aparecendo como pendencia para os administradores 
+do sistema, para que nós terminemos o cadastro e devolvamos com o login final para o cliente.
+
+Informações necessárias:
+Eles precisam destes itens só:
+
+RAZÃO SOCIAL
+CNPJ
+EMAIL PRA CADASTRO
+MODELO(S) DO(S) EQUIPAMENTO(S)
+NUMERO(S) DE SÉRIE DO(S) EQUIPAMENTO(S)
+WHATSAPP PARA CONTATO
+
+Chamado #59636
+
+Basicamente hoje entendemos que temos 2 níveis e queríamos um terceiro:
+
+1º nível : ADM – esse nível é criado por voces para os nossos usuários.
+Não veria problemas em nós mesmo criarmos esses usuários tambem, mas da maneira que esta já nos atende.
+
+2º nível: Cliente – é o nível que nós criamos para os clientes terem acessos as suas documentações. 
+Ele consegue visualizar apenas as dele. Essa esta Ok.
+
+3º nível: Consulta – esse é o nível novo, o ideal era que nós (usuários ADM) criássemos esses usuários. 
+Seria um usuário com acesso a visualizar todas as documentações e clientes, mas que não conseguisse editar nada. 
+Esses usuários se destinam aos representantes/ dealers e ao departamento de peças.
+
+############## HISTÓRICO DE MODIFICAÇÕES - PROJECTSEND
+
+### LINK PARA MANUAL DE USO DO SISTEMA
+
+* Implementa um link na tela de login que leva ao manual
+* O manual é um pdf que abre em nova aba do navegador
+ 
+Adicionado o pdf do manual em ./Manual_documentação_eletronica_01.pdf
+Altera o arquivo ./index.php:
+- Adiciona linha de 148 até 150
+
+### E-MAIL PARA SOLICITAÇÃO DE NOVO REGISTRO DE CLIENTE
+
+* Implementa acesso a um formulário na tela de login
+* Implementa formulário de envio de e-mail com dados para cadastro
+* Implementa campo para adicionar e-mail "to" no menu Opções > E-mails de notificações
+
+Criados três arquivos:
+- ./email-new.php (arquivo com a função que envia o email)
+- ./includes/forms/email-new-form.php (arquivo com o formulário)
+- ./emails/new_account_request.html (arquivo que monta o corpo do email)
+
+Altera o arquivo ./options.php
+- Adiciona a linha 124
+ 
+Altera o arquivo ./index.php:
+- Adiciona as linhas 137, 138, 140, 141 e 142
+- Modifica linha 139
+
+Altera o arquivo ./includes/forms/options/email.php:
+- Adiciona linhas de 19 até 28
+ 
+Altera o arquivo ./includes/Classes/Emails.php:
+- Na função email_prepare_body($type), adiciona linhas de 186 até 190
+- Implementa a função email_new_account_request($message), adiciona linhas de 555 até 574
+- Na função email_new_account_request($message), adiciona linhas 655 e de 663 até 667
+
+### NOVO NÍVEL DE ACESSO
+
+* Implementa o nível 6
+* Nível 6 como nível de usuário administrativo de apenas visualização de arquivos e clientes
+
+Altera arquivo ./includes/text.strings.php
+- Adiciona linha 16
+
+altera o arquivo ./users.php
+- Adiciona linhas 174, 331
+
+Altera arquivo ./includes/forms/users.php
+- Adiciona linha 83
+
+Altera arquivo ./includes/Classes/Users.php
+- Adiciona linhas 458, 618, 128, 666
+
+Altera arquivo ./includes/main-menu.php
+- Modifica linhas 13, 57, 69, 106
+- Adiciona linhas 76, 84, 89, 97, 114, 119, 128, 146, 151, 159, 176, 181, 200, 216, 221, 226,
+231, 236, 241, 246, 251, 267, 272, 277, 282, 287, 292, 297, 302, 307, 312, 330, 335, 340, 345,
+429, 430, 443
+
+Adiciona nivel 6 de permissão em:
+- ./resset-password.php - linha 8
+- ./register.php - linha 9
+- ./public.php - linha 9
+- ./process.php - linha 7
+- ./manage-files.php - linha 8
+- ./index.php - linha 17
+- ./header.php - linha 45
+- ./error.php - linha 6
+- ./download.php - linha 10
+- ./download-information.php - linha 7
+- ./dashboard.php - linha 8
+- ./clients.php - linha 9
+- ./clients-requests.php - linha 9
+- ./clients-menbership-requests.php - linha 9
+- ./templates/common.php - linha 15
+- ./includes/widgets/statistics.php - linha 6
+- ./includes/widgets/ajax/statistics.php - linha 6
+
+Altera arquivo ./manage-files.php
+* Não pode ser editável por visualizadores
+
+- Adiciona linhas 452, 453, 454, 502, 503, 504, 561, 649, 841
+- Modifica linhas 573, 785
+
+Altera arquivo ./clients.php
+* Não pode ser editável por visualizadores
+
+- Adiciona linhas 163, 164, 165, 187, 188, 189, 234, 298, 368, 412
+
+##########################################################################################
+
+* atualização 15.05.2024
+
+Altera arquivo ./includes/main-menu.php
+- Modifica linha 176
+
+Altera arquivo ./users-add.php
+- Modifica linha 9
+
+Altera arquivo ./includes/forms/users.php
+- Adiciona linhas 79 e de 86 até 91
+
+
+
+
+
+
+
+
+
+
+
+
+

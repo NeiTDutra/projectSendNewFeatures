@@ -3,7 +3,7 @@
         require_once '../../bootstrap.php';
     }
 
-    $allowed_news = array(9,8,7);
+    $allowed_news = array(9,8,7,6);
     if (!in_array(CURRENT_USER_LEVEL,$allowed_news)) {
         exit;
     }

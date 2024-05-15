@@ -7,7 +7,7 @@
  */
 use ProjectSend\Classes\Download;
 
-$allowed_levels = array(9,8,7,0);
+$allowed_levels = array(9,8,7,6,0);
 require_once 'bootstrap.php';
 
 $page_title = __('File information','cftp_admin');

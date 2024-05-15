@@ -5,7 +5,7 @@
  *
  * @package ProjectSend
  */
-$allowed_levels = array(9,8,7,0);
+$allowed_levels = array(9,8,7,6,0);
 require_once 'bootstrap.php';
 
 $active_nav = 'files';
@@ -444,12 +444,13 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                     ?>
                 </div>
             </div>
-
-
             <form action="<?php echo $current_url; ?>" name="files_list" method="post" class="form-inline batch_actions">
                 <?php addCsrf(); ?>
                 <div class="form_actions_right">
                     <div class="form_actions">
+                        <?php
+                        if (CURRENT_USER_LEVEL != '6') {
+                        ?>
                         <div class="form_actions_submit">
                             <div class="form-group group_float">
                                 <label class="control-label hidden-xs hidden-sm"><i class="glyphicon glyphicon-check"></i> <?php _e('Selected files actions','cftp_admin'); ?>:</label>
@@ -497,6 +498,9 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                             </div>
                             <button type="submit" id="do_action" class="btn btn-sm btn-default"><?php _e('Proceed','cftp_admin'); ?></button>
                         </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -553,7 +557,8 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                         $conditions = array(
                                             'select_all'		=> true,
                                             'is_not_client'		=> ( CURRENT_USER_LEVEL != '0' ) ? true : false,
-                                            'can_set_public' => ( CURRENT_USER_LEVEL != '0' || current_user_can_upload_public()) ? true : false,
+                                            'is_view_only'      => ( CURRENT_USER_LEVEL == '6' ) ? false : true,
+                                            'can_set_public'    => ( CURRENT_USER_LEVEL != '0' || current_user_can_upload_public()) ? true : false,
                                             'total_downloads'	=> ( CURRENT_USER_LEVEL != '0' && !isset( $search_on ) ) ? true : false,
                                             'is_search_on'		=> ( isset( $search_on ) ) ? true : false,
                                         );
@@ -564,7 +569,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                                                         'attributes'	=> array(
                                                                                 'class'		=> array( 'td_checkbox' ),
                                                                             ),
-                                                        'condition'		=> $conditions['select_all'],
+                                                        'condition'		=> ($conditions['select_all'] && $conditions['is_view_only']),
                                                     ),
                                                     array(
                                                         'content'		=> __('Preview','cftp_admin'),
@@ -640,6 +645,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                                                     array(
                                                         'content'		=> __('Actions','cftp_admin'),
                                                         'hide'			=> 'phone',
+                                                        'condition'     => $conditions['is_view_only'],
                                                     ),
                                                 );
         
@@ -775,7 +781,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                                                     array(
                                                         'checkbox'		=> true,
                                                         'value'			=> $file->id,
-                                                        'condition'		=> $conditions['select_all'],
+                                                        'condition'		=> ($conditions['select_all'] && $conditions['is_view_only']),
                                                     ),
                                                     array(
                                                         'content'		=> $preview_cell,
@@ -831,6 +837,7 @@ include_once ADMIN_VIEWS_DIR . DS . 'header.php';
                                                     ),
                                                     array(
                                                         'content'		=> '<a href="files-edit.php?ids=' . $file->id .'" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i><span class="button_label">' . __('Edit','cftp_admin') . '</span></a>',
+                                                        'condition'     => $conditions['is_view_only'],
                                                     ),
                                         );
         

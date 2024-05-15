@@ -6,7 +6,7 @@
  * @subpackage	Clients
  *
  */
-$allowed_levels = array(9,8);
+$allowed_levels = array(9,8,6);
 require_once 'bootstrap.php';
 
 $active_nav = 'groups';

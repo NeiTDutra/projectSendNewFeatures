@@ -5,7 +5,7 @@
  * @package		ProjectSend
  *
  */
-$allowed_levels = array(9,8,7);
+$allowed_levels = array(9,8,7,6);
 require_once 'bootstrap.php';
 $page_title = __('Dashboard', 'cftp_admin');
 

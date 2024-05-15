@@ -14,7 +14,7 @@
  * @package		ProjectSend
  *
  */
-$allowed_levels = array(9,8,7,0);
+$allowed_levels = array(9,8,7,6,0);
 require_once 'bootstrap.php';
 
 global $dbh;
@@ -134,7 +134,14 @@ include_once ADMIN_VIEWS_DIR . DS . 'header-unlogged.php';
                             } else {
                         ?>
                                 <p><?php _e("This server does not allow self registrations.",'cftp_admin'); ?></p>
-                                <p><?php _e("If you need an account, please contact a server administrator.",'cftp_admin'); ?><a href="<?php echo BASE_URI; ?>email-new.php"><b> Aqui</b></a></p>
+                                <?php if (get_option('new_account_email_address')) {
+                                ?>
+                                <p><?php _e("If you need an account, please contact a server administrator.",'cftp_admin'); ?>
+                                    <a href="<?php echo BASE_URI; ?>email-new.php"><b> Aqui</b></a>
+                                </p>
+                                <?php
+                                }
+                                ?>
                         <?php
                             }
                         ?>

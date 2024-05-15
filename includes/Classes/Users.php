@@ -125,6 +125,7 @@ class Users
             Delete clients: [8, 9]
         */
         switch ($this->role) {
+            case 6:
             case 7:
             case 8:
             case 9:
@@ -454,6 +455,7 @@ class Users
                     case 0:
                         $email_type = "new_client";
                         break;
+                    case 6:
                     case 7:
                     case 8:
                     case 9:
@@ -613,6 +615,7 @@ class Users
                     case 0:
                         $log_action_number = 14;
                         break;
+                    case 6:
                     case 7:
                     case 8:
                     case 9:
@@ -660,6 +663,7 @@ class Users
                     case 0:
                         $log_action_number = 17;
                         break;
+                    case 6:
                     case 7:
                     case 8:
                     case 9:

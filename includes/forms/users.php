@@ -76,11 +76,19 @@ switch ($user_form_type) {
 				<div class="col-sm-8">
 					<select name="level" id="level" class="form-control" required>
                         <?php
-                            $roles = [
-                                '9' => USER_ROLE_LVL_9,
-                                '8' => USER_ROLE_LVL_8,
-                                '7' => USER_ROLE_LVL_7,
-                            ];
+							if ($_SESSION['role'] == 9) {
+								$roles = [
+									'9' => USER_ROLE_LVL_9,
+									'8' => USER_ROLE_LVL_8,
+									'7' => USER_ROLE_LVL_7,
+									'6' => USER_ROLE_LVL_6,
+								];
+							}
+							if ($_SESSION['role'] == 8) {
+								$roles = [
+									'6' => USER_ROLE_LVL_6,
+								];
+							}
                             foreach ( $roles as $role_level => $role_name ) {
                         ?>
 						        <option value="<?php echo $role_level; ?>" <?php echo (isset($user_arguments['role']) && $user_arguments['role'] == $role_level) ? 'selected="selected"' : ''; ?>><?php echo $role_name; ?></option>

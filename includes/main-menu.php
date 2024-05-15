@@ -10,7 +10,7 @@ $items = array();
 /**
  * Items for system users
  */
-if ( current_role_in( array( 9,8,7 ) ) )
+if ( current_role_in( array( 9,8,7,6 ) ) )
 {
 
 	/** Count inactive CLIENTS */
@@ -54,7 +54,7 @@ if ( current_role_in( array( 9,8,7 ) ) )
 
 	$items['dashboard'] = array(
 								'nav'	=> 'dashboard',
-								'level'	=> array( 9,8,7 ),
+								'level'	=> array( 9,8,7,6 ),
 								'main'	=> array(
 												'label'	=> __('Dashboard', 'cftp_admin'),
 												'icon'	=> 'tachometer',
@@ -66,13 +66,14 @@ if ( current_role_in( array( 9,8,7 ) ) )
 
 	$items['files']		= array(
 								'nav'	=> 'files',
-								'level'	=> array( 9,8,7 ),
+								'level'	=> array( 9,8,7,6 ),
 								'main'	=> array(
 												'label'	=> __('Files', 'cftp_admin'),
 												'icon'	=> 'file',
 											),
 								'sub'	=> array(
 												array(
+													'level' => array( 9,8,7 ),
 													'label'	=> __('Upload', 'cftp_admin'),
 													'link'	=> 'upload.php',
 												),
@@ -80,10 +81,12 @@ if ( current_role_in( array( 9,8,7 ) ) )
 													'divider'	=> true,
 												),
 												array(
+													'level' => array( 9,8,7,6 ),
 													'label'	=> __('Manage files', 'cftp_admin'),
 													'link'	=> 'manage-files.php',
 												),
 												array(
+													'level' => array( 9,8,7 ),
 													'label'	=> __('Find orphan files', 'cftp_admin'),
 													'link'	=> 'import-orphans.php',
 												),
@@ -91,6 +94,7 @@ if ( current_role_in( array( 9,8,7 ) ) )
 													'divider'	=> true,
 												),
 												array(
+													'level' => array( 9,8,7 ),
 													'label'	=> __('Categories', 'cftp_admin'),
 													'link'	=> 'categories.php',
 												),
@@ -99,7 +103,7 @@ if ( current_role_in( array( 9,8,7 ) ) )
 
 	$items['clients']	= array(
 								'nav'	=> 'clients',
-								'level'	=> array( 9,8 ),
+								'level'	=> array( 9,8,6 ),
 								'main'	=> array(
 												'label'	=> __('Clients', 'cftp_admin'),
 												'icon'	=> 'address-card',
@@ -107,10 +111,12 @@ if ( current_role_in( array( 9,8,7 ) ) )
 											),
 								'sub'	=> array(
 												array(
+													'level' => array( 9,8 ),
 													'label'	=> __('Add new', 'cftp_admin'),
 													'link'	=> 'clients-add.php',
 												),
 												array(
+													'level' => array( 9,8,6 ),
 													'label'	=> __('Manage clients', 'cftp_admin'),
 													'link'	=> 'clients.php',
 													//'badge'	=> COUNT_CLIENTS_INACTIVE,
@@ -119,6 +125,7 @@ if ( current_role_in( array( 9,8,7 ) ) )
 													'divider'	=> true,
 												),
 												array(
+													'level' => array( 9,8 ),
 													'label'	=> __('Account requests', 'cftp_admin'),
 													'link'	=> 'clients-requests.php',
 													'badge'	=> COUNT_CLIENTS_REQUESTS,
@@ -136,10 +143,12 @@ if ( current_role_in( array( 9,8,7 ) ) )
 											),
 								'sub'	=> array(
 												array(
+													'level'	=> array( 9,8 ),
 													'label'	=> __('Add new', 'cftp_admin'),
 													'link'	=> 'groups-add.php',
 												),
 												array(
+													'level'	=> array( 9,8 ),
 													'label'	=> __('Manage groups', 'cftp_admin'),
 													'link'	=> 'groups.php',
 												),
@@ -147,6 +156,7 @@ if ( current_role_in( array( 9,8,7 ) ) )
 													'divider'	=> true,
 												),
 												array(
+													'level'	=> array( 9,8 ),
 													'label'	=> __('Membership requests', 'cftp_admin'),
 													'link'	=> 'clients-membership-requests.php',
 													'badge'	=> COUNT_MEMBERSHIP_REQUESTS,
@@ -156,17 +166,19 @@ if ( current_role_in( array( 9,8,7 ) ) )
 
 	$items['users']		= array(
 								'nav'	=> 'users',
-								'level'	=> array( 9 ),
+								'level'	=> array( 9,8 ),
 								'main'	=> array(
 												'label'	=> __('System Users', 'cftp_admin'),
 												'icon'	=> 'users',
 											),
 								'sub'	=> array(
 												array(
+													'level'	=> array( 9,8 ),
 													'label'	=> __('Add new', 'cftp_admin'),
 													'link'	=> 'users-add.php',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Manage system users', 'cftp_admin'),
 													'link'	=> 'users.php',
 													//'badge'	=> COUNT_USERS_INACTIVE,
@@ -185,6 +197,7 @@ if ( current_role_in( array( 9,8,7 ) ) )
 											),
 								'sub'	=> array(
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Templates', 'cftp_admin'),
 													'link'	=> 'templates.php',
 												),
@@ -200,34 +213,42 @@ if ( current_role_in( array( 9,8,7 ) ) )
 											),
 								'sub'	=> array(
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('General options', 'cftp_admin'),
 													'link'	=> 'options.php?section=general',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Clients', 'cftp_admin'),
 													'link'	=> 'options.php?section=clients',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Privacy', 'cftp_admin'),
 													'link'	=> 'options.php?section=privacy',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('E-mail notifications', 'cftp_admin'),
 													'link'	=> 'options.php?section=email',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Security', 'cftp_admin'),
 													'link'	=> 'options.php?section=security',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Branding', 'cftp_admin'),
 													'link'	=> 'options.php?section=branding',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('External Login', 'cftp_admin'),
 													'link'	=> 'options.php?section=external_login',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Scheduled tasks (cron)', 'cftp_admin'),
 													'link'	=> 'options.php?section=cron',
 												),
@@ -243,42 +264,52 @@ if ( current_role_in( array( 9,8,7 ) ) )
 											),
 								'sub'	=> array(
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Header / footer', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=header_footer',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('New file by user', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=new_files_by_user',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('New file by client', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=new_files_by_client',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('New client (welcome)', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=new_client',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('New client (self-registered)', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=new_client_self',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Approve client account', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=account_approve',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Deny client account', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=account_deny',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Client updated memberships', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=client_edited',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('New user (welcome)', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=new_user',
 												),
 												array(
+													'level'	=> array( 9 ),
 													'label'	=> __('Password reset', 'cftp_admin'),
 													'link'	=> 'email-templates.php?section=password_reset',
 												),
@@ -296,18 +327,22 @@ if ( current_role_in( array( 9,8,7 ) ) )
 											),
 								'sub'	=> array(
                                             array(
+												'level'	=> array( 9 ),
                                                 'label'	=> __('Actions log', 'cftp_admin'),
                                                 'link'	=> 'actions-log.php',
                                             ),
                                             array(
+												'level'	=> array( 9 ),
                                                 'label'	=> __('Cron log', 'cftp_admin'),
                                                 'link'	=> 'cron-log.php',
                                             ),
                                             array(
+												'level'	=> array( 9 ),
                                                 'label'	=> __('Test email configuration', 'cftp_admin'),
                                                 'link'	=> 'email-test.php',
                                             ),
                                             array(
+												'level'	=> array( 9 ),
                                                 'label'	=> __('Unblock IP', 'cftp_admin'),
                                                 'link'	=> 'unblock-ip.php',
                                             ),
@@ -345,7 +380,7 @@ else
 
 	$items['view_files'] = array(
 								'nav'	=> 'template',
-								'level'	=> array( 9,8,7,0 ),
+								'level'	=> array( 9,8,7,6,0 ),
 								'main'	=> array(
 												'label'	=> __('View my files', 'cftp_admin'),
 												'link'	=> CLIENT_VIEW_FILE_LIST_URL_PATH,
@@ -391,17 +426,20 @@ foreach ( $items as $item )
 			*/
 			foreach ( $item['sub'] as $subitem )
 			{
-				$badge		= ( !empty( $subitem['badge'] ) ) ? ' <span class="badge">' . $subitem['badge'] . '</span>' : '';
-				$icon		= ( !empty( $subitem['icon'] ) ) ? '<i class="fa fa-'.$subitem['icon'].' fa-fw" aria-hidden="true"></i>' : '';
-				if ( !empty( $subitem['divider'] ) )
+				if ( current_role_in( $subitem['level'] ) )
 				{
-					$menu_output .= "\t\t<li class='divider'></li>\n";
-				}
-				else
-				{
-					$sub_active		= ( $subitem['link'] == $current_filename['path'] ) ? 'current_page' : '';
-					$format			= "\t\t<li class='%s'>\n\t\t\t<a href='%s'>%s<span class='submenu_label'>%s%s</span></a>\n\t\t</li>\n";
-					$menu_output 	.= sprintf( $format, $sub_active, BASE_URI . $subitem['link'], $icon, $subitem['label'], $badge );
+					$badge		= ( !empty( $subitem['badge'] ) ) ? ' <span class="badge">' . $subitem['badge'] . '</span>' : '';
+					$icon		= ( !empty( $subitem['icon'] ) ) ? '<i class="fa fa-'.$subitem['icon'].' fa-fw" aria-hidden="true"></i>' : '';
+					if ( !empty( $subitem['divider'] ) )
+					{
+						$menu_output .= "\t\t<li class='divider'></li>\n";
+					}
+					else
+					{
+						$sub_active		= ( $subitem['link'] == $current_filename['path'] ) ? 'current_page' : '';
+						$format			= "\t\t<li class='%s'>\n\t\t\t<a href='%s'>%s<span class='submenu_label'>%s%s</span></a>\n\t\t</li>\n";
+						$menu_output 	.= sprintf( $format, $sub_active, BASE_URI . $subitem['link'], $icon, $subitem['label'], $badge );
+					}
 				}
 			}
 			$menu_output 	.= "\t</ul>\n</li>\n";

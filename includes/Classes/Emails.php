@@ -183,6 +183,11 @@ class Emails
 					$customize_body = get_option('email_client_edited_customize');
 					$body_text_option = 'email_client_edited_text';
 				break;
+			case 'new_account_request':
+					$filename = 'new_account_request.html';
+					$customize_body = 0;
+					$body_text_option = null;
+				break;
             case 'test_settings':
                     $filename = 'test_settings.html';
                     $customize_body = 0;
@@ -548,6 +553,27 @@ class Emails
 	}
 
 	/**
+	 * New account request email
+	 */
+	private function email_new_account_request($message)
+	{
+		$subject = __('Solicitação de nova conta', 'cftp_admin');
+		$this->email_body = $this->email_prepare_body('new_account_request');
+		$this->email_body = str_replace(
+									array('%BODY%', '%SUBJECT%'),
+									array(
+										$message,
+                                        $subject,
+										),
+									$this->email_body
+								);
+		return array(
+					'subject' => $subject,
+					'body' => $this->email_body
+				);
+	}
+
+	/**
 	 * E-mail sent when testing email settings.
 	 */
 	private function email_test_settings($message)
@@ -626,6 +652,7 @@ class Emails
         
         $test_message = (!empty($arguments['message'])) ? filter_var($arguments['message'], FILTER_SANITIZE_STRING) : __('This is a test message', 'cftp_admin');
         $generic_message = (!empty($arguments['message'])) ? $arguments['message'] : null;
+		$new_account_message = $arguments['message'];
 
         $this->try_bcc = false;
         $this->email_successful = false;
@@ -633,6 +660,11 @@ class Emails
         $debug = false;
 
         switch($this->type) {
+			case 'new_account_request':
+				$this->body_variables = [ $new_account_message ];
+                $this->addresses = $arguments['to'];
+                $debug = true;
+			break;
             case 'test_settings':
                 $this->body_variables = [ $test_message ];
                 $this->addresses = $arguments['to'];

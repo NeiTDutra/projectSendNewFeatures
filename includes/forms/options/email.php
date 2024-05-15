@@ -16,6 +16,17 @@
 
 <div class="options_divide"></div>
 
+<h3><?php _e('"To" information request new account','cftp_admin'); ?></h3>
+
+<div class="form-group">
+    <label for="new_account_email_address" class="col-sm-4 control-label"><?php _e('E-mail address','cftp_admin'); ?></label>
+    <div class="col-sm-8">
+        <input type="text" name="new_account_email_address" id="new_account_email_address" class="form-control" value="<?php echo html_output(get_option('new_account_email_address')); ?>" />
+    </div>
+</div>
+
+<div class="options_divide"></div>
+
 <h3><?php _e('System performance','cftp_admin'); ?></h3>
 
 <div class="form-group">

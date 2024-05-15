@@ -6,7 +6,7 @@
  * @subpackage	Users
  *
  */
-$allowed_levels = array(9);
+$allowed_levels = array(9,8);
 require_once 'bootstrap.php';
 
 $active_nav = 'users';

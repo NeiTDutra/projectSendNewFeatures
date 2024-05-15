@@ -4,7 +4,7 @@ use ProjectSend\Classes\Download;
 use ProjectSend\Classes\ActionsLog;
 
 /** Process an action */
-$allowed_levels = array(9,8,7,0);
+$allowed_levels = array(9,8,7,6,0);
 require_once 'bootstrap.php';
 
 global $auth;

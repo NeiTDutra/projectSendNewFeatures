@@ -121,6 +121,7 @@ if ($_POST) {
      */
     /** Values that can be empty */
     $allowed_empty_values = [
+        'new_account_email_address',
         'footer_custom_content',
         'mail_copy_addresses',
         'mail_smtp_host',

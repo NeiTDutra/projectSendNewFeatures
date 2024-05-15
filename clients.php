@@ -6,7 +6,7 @@
  * @subpackage	Clients
  *
  */
-$allowed_levels = array(9,8);
+$allowed_levels = array(9,8,6);
 require_once 'bootstrap.php';
 
 $active_nav = 'clients';
@@ -159,6 +159,10 @@ if (isset($_POST['action'])) {
                 <?php addCsrf(); ?>
                 <div class="form_actions_right">
                     <div class="form_actions">
+
+                        <?php
+                        if (CURRENT_USER_LEVEL != '6') {
+                        ?>
                         <div class="form_actions_submit">
                             <div class="form-group group_float">
                                 <label class="control-label hidden-xs hidden-sm"><i class="glyphicon glyphicon-check"></i> <?php _e('Selected clients actions','cftp_admin'); ?>:</label>
@@ -180,6 +184,9 @@ if (isset($_POST['action'])) {
                             </div>
                             <button type="submit" id="do_action" class="btn btn-sm btn-default"><?php _e('Proceed','cftp_admin'); ?></button>
                         </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -224,6 +231,7 @@ if (isset($_POST['action'])) {
                                                         'attributes'	=> array(
                                                                                 'class'		=> array( 'td_checkbox' ),
                                                                             ),
+                                                        'condition'     => ( CURRENT_USER_LEVEL == '6' ) ? false : true,
                                                     ),
                                                     array(
                                                         'sortable'		=> true,
@@ -287,6 +295,7 @@ if (isset($_POST['action'])) {
                                                     array(
                                                         'content'		=> __('Actions','cftp_admin'),
                                                         'hide'			=> 'phone',
+                                                        'condition'     => ( CURRENT_USER_LEVEL == '6' ) ? false : true,
                                                     ),
                                                 );
                         $table->thead( $thead_columns );
@@ -356,6 +365,7 @@ if (isset($_POST['action'])) {
                                                     array(
                                                             'checkbox'		=> true,
                                                             'value'			=> $client->id,
+                                                            'condition'     => ( CURRENT_USER_LEVEL == '6' ) ? false : true,
                                                         ),
                                                     array(
                                                             'content'		=> format_date($client->created_date),
@@ -398,7 +408,8 @@ if (isset($_POST['action'])) {
                                                         ),
                                                     array(
                                                             'actions'		=> true,
-                                                            'content'		=>  '<a href="clients-edit.php?id=' . $client->id . '" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i><span class="button_label">' . __('Edit','cftp_admin') . '</span></a>' . "\n"
+                                                            'content'		=>  '<a href="clients-edit.php?id=' . $client->id . '" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i><span class="button_label">' . __('Edit','cftp_admin') . '</span></a>' . "\n",
+                                                            'condition'     => ( CURRENT_USER_LEVEL == '6' ) ? false : true,
                                                         ),
                                                 );
 
