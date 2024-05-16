@@ -11,7 +11,7 @@
  * @subpackage	Updates
  */
 
-$allowed_update = array(9,8,7);
+$allowed_update = array(9,8,7,6);
 if (current_role_in($allowed_update)) {
 	
     $statement = $dbh->prepare("SET SQL_MODE='ALLOW_INVALID_DATES';");

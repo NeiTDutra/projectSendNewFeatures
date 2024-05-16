@@ -6,7 +6,7 @@
  * @subpackage	Users
  *
  */
-$allowed_levels = array(9);
+$allowed_levels = array(9,8);
 require_once 'bootstrap.php';
 
 $active_nav = 'users';
@@ -207,6 +207,9 @@ $current_url = get_form_action_with_existing_parameters(basename(__FILE__));
             <?php addCsrf(); ?>
             <div class="form_actions_right">
                 <div class="form_actions">
+                    <?php
+                        if (CURRENT_USER_LEVEL != 8) {
+                    ?>
                     <div class="form_actions_submit">
                         <div class="form-group group_float">
                             <label class="control-label hidden-xs hidden-sm"><i class="glyphicon glyphicon-check"></i> <?php _e('Selected users actions','cftp_admin'); ?>:</label>
@@ -228,6 +231,9 @@ $current_url = get_form_action_with_existing_parameters(basename(__FILE__));
                         </div>
                         <button type="submit" id="do_action" class="btn btn-sm btn-default"><?php _e('Proceed','cftp_admin'); ?></button>
                     </div>
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
             <div class="clear"></div>
@@ -263,7 +269,7 @@ $current_url = get_form_action_with_existing_parameters(basename(__FILE__));
 
                     $thead_columns		= array(
                                                 array(
-                                                    'select_all'	=> true,
+                                                    'select_all'	=> CURRENT_USER_LEVEL == 8 ? false :true,
                                                     'attributes'	=> array(
                                                                             'class'		=> array( 'td_checkbox' ),
                                                                         ),
@@ -339,7 +345,7 @@ $current_url = get_form_action_with_existing_parameters(basename(__FILE__));
                          * Add the cells to the row
                          * @todo allow deleting first user
                          */
-                        if ( $user->id == 1 ) {
+                        if ( $user->id == 1 || CURRENT_USER_LEVEL == 8) {
                             $cell = array( 'content' => '' );
                         }
                         else {

@@ -178,7 +178,7 @@ if ( current_role_in( array( 9,8,7,6 ) ) )
 													'link'	=> 'users-add.php',
 												),
 												array(
-													'level'	=> array( 9 ),
+													'level'	=> array( 9,8 ),
 													'label'	=> __('Manage system users', 'cftp_admin'),
 													'link'	=> 'users.php',
 													//'badge'	=> COUNT_USERS_INACTIVE,

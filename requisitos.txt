@@ -156,8 +156,20 @@ Altera arquivo ./users-add.php
 Altera arquivo ./includes/forms/users.php
 - Adiciona linhas 79 e de 86 até 91
 
+* atualização 16.05.2024
 
+./includes/main-menu.php
+linha 181
 
+./includes/core.update.php
+linha 14
+
+./users-edit.php
+linha 9
+
+./users.php
+modifica linha 348, 266, 272
+adiciona linhas 210, 211, 212, 234, 235 e 236
 
 
 
